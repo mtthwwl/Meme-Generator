@@ -34,6 +34,19 @@ function drawMeme() {
 
     ctx.font = `${canvas.height / 10}px Impact`;
     ctx.fillStyle = 'white';
+    ctx.strokeStyle = 'black';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+
+    //TOP-TEXT
+    ctx.lineWidth = 3;
+    ctx.strokeText(topText.value.toUpperCase(), canvas.width/2, 10);
+    ctx.fillText(topText.value.toUpperCase(), canvas.width / 2, 10);
+
+    //BOTTOM-TEXT
+    ctx.lineWidth = 3;
+    ctx.strokeText(bottomText.value.toUpperCase(), canvas.width/2, canvas.height - 60);
+    ctx.fillText(bottomText.value.toUpperCase(), canvas.width / 2, canvas.height - 60);
 
 };
 
@@ -44,4 +57,10 @@ function generateMeme() {
 
 function downloadMeme() {
     console.log('download');
+    const dataURL = canvas.toDataURL('image/jpeg');
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'meme.jpg';
+    link.click();
+
 };
